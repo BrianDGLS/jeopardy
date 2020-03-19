@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jeopardy</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <style>
+      .modal,
+      body {
+        background: #001883;
+        color: #fff;
+      }
+
+      .modal-content {
+        background: #0024aa;
+      }
+
+      .table {
+        width: 100%;
+        color: #fff;
+      }
+
+      .table td {
+        padding: 20px;
+        cursor: pointer;
+        user-select: none;
+        border-radius: 5px;
+        background: #0024aa;
+        border: 1px solid black;
+        box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.05);
+      }
+
+      td.done {
+        text-decoration: line-through;
+      }
+
+      [type="checkbox"] ~ p {
+        display: none;
+      }
+
+      [type="checkbox"]:checked ~ p {
+        display: initial;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center">Jeopardy</h1>
+      <table class="questions table text-center">
+        <thead>
+          <tr>
+            <th>Science</th>
+            <th>AKA</th>
+            <th>Geology</th>
+            <th>Clothing</th>
+            <th>Just No</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-toggle="modal" data-target="#questionModal">$200</td>
+            <td data-toggle="modal" data-target="#questionModal">$200</td>
+            <td data-toggle="modal" data-target="#questionModal">$200</td>
+            <td data-toggle="modal" data-target="#questionModal">$200</td>
+            <td data-toggle="modal" data-target="#questionModal">$200</td>
+          </tr>
+          <tr>
+            <td data-toggle="modal" data-target="#questionModal">$400</td>
+            <td data-toggle="modal" data-target="#questionModal">$400</td>
+            <td data-toggle="modal" data-target="#questionModal">$400</td>
+            <td data-toggle="modal" data-target="#questionModal">$400</td>
+            <td data-toggle="modal" data-target="#questionModal">$400</td>
+          </tr>
+          <tr>
+            <td data-toggle="modal" data-target="#questionModal">$600</td>
+            <td data-toggle="modal" data-target="#questionModal">$600</td>
+            <td data-toggle="modal" data-target="#questionModal">$600</td>
+            <td data-toggle="modal" data-target="#questionModal">$600</td>
+            <td data-toggle="modal" data-target="#questionModal">$600</td>
+          </tr>
+          <tr>
+            <td data-toggle="modal" data-target="#questionModal">$800</td>
+            <td data-toggle="modal" data-target="#questionModal">$800</td>
+            <td data-toggle="modal" data-target="#questionModal">$800</td>
+            <td data-toggle="modal" data-target="#questionModal">$800</td>
+            <td data-toggle="modal" data-target="#questionModal">$800</td>
+          </tr>
+          <tr>
+            <td data-toggle="modal" data-target="#questionModal">$1000</td>
+            <td data-toggle="modal" data-target="#questionModal">$1000</td>
+            <td data-toggle="modal" data-target="#questionModal">$1000</td>
+            <td data-toggle="modal" data-target="#questionModal">$1000</td>
+            <td data-toggle="modal" data-target="#questionModal">$1000</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="well mt-3">
+        <h2>Players</h2>
+        <table class="players table">
+          <thead>
+            <tr>
+              <th>Chris</th>
+              <th>Ian</th>
+              <th>Shaiji</th>
+              <th>Ruan</th>
+              <th>Colin</th>
+              <th>Derek</th>
+              <th>William</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-money="Chris">$0</td>
+              <td data-money="Ian">$0</td>
+              <td data-money="Shaiji">$0</td>
+              <td data-money="Ruan">$0</td>
+              <td data-money="Colin">$0</td>
+              <td data-money="Derek">$0</td>
+              <td data-money="William">$0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="modal fade" id="questionModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-body">
+            <p class="value"></p>
+            <h2 class="question-text"></h2>
+            <input type="checkbox" />
+            <p class="answer-text h4"></p>
+            <hr />
+            <div class="mt-5">
+              <h4>Correct Answers</h4>
+              <form id="correct-select" class="form-inline">
+                <label for="Chris">Chris</label>
+                <input type="checkbox" class="mr-3" id="Chris" value="Chris" />
+                <label for="Ian">Ian</label>
+                <input type="checkbox" class="mr-3" id="Ian" value="Ian" />
+                <label for="Shaiji">Shaiji</label>
+                <input type="checkbox" class="mr-3" id="Shaiji" value="Shaiji" />
+                <label for="Ruan">Ruan</label>
+                <input type="checkbox" class="mr-3" id="Ruan" value="Ruan" />
+                <label for="Colin">Colin</label>
+                <input type="checkbox" class="mr-3" id="Colin" value="Colin" />
+                <label for="Derek">Derek</label>
+                <input type="checkbox" class="mr-3" id="Derek" value="Derek" />
+                <label for="William">William</label>
+                <input type="checkbox" class="mr-3" id="William" value="William" />
+              </form>
+              <h4>Wrong Answers</h4>
+              <form id="wrong-select" class="form-inline">
+                <label for="wChris">Chris</label>
+                <input type="checkbox" class="mr-3" id="wChris" value="Chris" />
+                <label for="wIan">Ian</label>
+                <input type="checkbox" class="mr-3" id="wIan" value="Ian" />
+                <label for="wShaiji">Shaiji</label>
+                <input type="checkbox" class="mr-3" id="wShaiji" value="Shaiji" />
+                <label for="wRuan">Ruan</label>
+                <input type="checkbox" class="mr-3" id="wRuan" value="Ruan" />
+                <label for="wColin">Colin</label>
+                <input type="checkbox" class="mr-3" id="wColin" value="Colin" />
+                <label for="wDerek">Derek</label>
+                <input type="checkbox" class="mr-3" id="wDerek" value="Derek" />
+                <label for="wWilliam">William</label>
+                <input type="checkbox" class="mr-3" id="wWilliam" value="William" />
+              </form>
+              <div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              data-dismiss="modal"
+              class="btn btn-primary done"
+            >
+              Done
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <script src="main.js"></script>
+  </body>
+</html>
